@@ -2,8 +2,8 @@
 
 ---
 
-## Build **better**
-## apps **faster**
+## Build **Better**
+## Apps **Faster**
 
 ---
 ## **What we'll cover**
@@ -18,7 +18,7 @@
 ---
 
 ## And of course...
-## **tests**
+## **Tests**
 
 ---
 
@@ -163,6 +163,7 @@ However, Carthage is also a challenger.
 
 - Add `/Pods` to repo.
 - Xcode integration.
+- Too many frameworks.
 
 ---
 
