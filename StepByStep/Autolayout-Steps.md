@@ -10,3 +10,4 @@ Start at 2815a7f:
 - Refactor UILabel creation (58eaf7a)
 - Fix imageView aspect ratio (f0b9bc3)
 - Add rotation support (d9b78dd)
+# 
