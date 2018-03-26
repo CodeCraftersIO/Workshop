@@ -1,4 +1,4 @@
-#Networking
+#[fit]Networking
 
 ---
 
@@ -54,6 +54,7 @@ func lookStockFor(symbol: String, handler: @escaping Handler) {
 2. Sensitive Default Values
 3. Readability
 4. Self Documented
+5. No `Alamofire`
 
 ---
 
@@ -75,9 +76,6 @@ public protocol Endpoint {
     /// Optional parameters for the request
     var parameters: [String : Any]? { get }
 
-    /// How the parameters should be encoded
-    var parameterEncoding: HTTPParameterEncoding { get }
-
     /// The HTTP headers to be sent
     var httpHeaderFields: [String : String]? { get }
 }
@@ -94,11 +92,7 @@ extension Endpoint {
     public var parameters: [String : AnyObject]? {
         return nil
     }
-    
-    public var parameterEncoding: HTTPParameterEncoding {
-        return .url
-    }
-    
+        
     public var httpHeaderFields: [String : String]? {
         return nil
     }
@@ -111,6 +105,20 @@ extension Endpoint {
 ![left](https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif)
 
 ---
-#What we've built:
+
+# What we've built:
+
+- Thin abstraction on top of `URLSession`
+- Protocol oriented
+- A way to bind `Request` to `Response`
+- Automatic parsing using `Decodable`
 
 ---
+
+# Improvements:
+
+- Add URL encoding for parameters
+- Dynamic signing of request
+- Cache support
+- Multipart upload
+- Custom response validation
