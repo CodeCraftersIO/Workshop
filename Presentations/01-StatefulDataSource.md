@@ -104,8 +104,10 @@ Value of type 'UICollectionView' has no member 'state'
 
 #FB Snapshot Tests
 
-- Allow us to refactor view code with ease
-- Built by Facebook, currently maintained by Uber
+- Allow us to refactor view code with ease.
+- Tests results are analized in the problem domain: *Pixels*
+	- $$f(vm,ss) = screenshot.png$$
+- Built by Facebook, currently maintained by Uber.
 
 ---
 
