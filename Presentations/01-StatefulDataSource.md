@@ -1,3 +1,4 @@
+theme: Work, 1
 
 ##*Stateful* DataSource
 
@@ -28,6 +29,7 @@ In Swift you can be more *explicit* about the state
 
 ---
 
+[.background-color: #495061]
 ![fit](https://i.imgur.com/B9qPkR7.png)
 
 ---
@@ -91,4 +93,71 @@ Value of type 'UICollectionView' has no member 'state'
 
 ---
 
+[.background-color: #495061]
 ![fit](https://memegenerator.net/img/instances/42555568/talk-is-cheap-show-me-the-code.jpg)
+
+---
+
+#Now, Snapshot Tests
+
+---
+
+#FB Snapshot Tests
+
+- Allow us to refactor view code with ease
+- Built by Facebook, currently maintained by Uber
+
+---
+
+#How it works:
+
+- Set expectations
+	- Create `UIView`/`UIViewController`
+	- Inject dependencies
+- Run the method
+	- Layout the View
+	- Generate a PNG for the View 
+- Compare to expectation
+	- Run a diff 
+
+---
+
+```swift
+class ProfileViewControllerTests: BSWSnapshotTest {
+
+    func testSampleLayout() {
+        let viewModel = ProfileViewModel.sampleVM()
+        let detailVC = ProfileViewController(
+          viewModel: viewModel
+        )
+        let navController = UINavigationController(
+          rootViewController: detailVC
+        )
+        waitABitAndVerify(viewController: navController)
+    }
+}
+```
+---
+
+![fit](https://www.objc.io/images/issue-15/snapshots-reference-59b0b96b.png)
+
+---
+
+![fit](https://i.pinimg.com/originals/bd/92/a0/bd92a01c5c6c48833a97a504d4046b75.jpg)
+
+---
+
+#Takeaways
+
+- Be aware of the tradeoffs before writing any abstraction.
+	- Bad abstractions are very, very expensive.
+- Don't be afraid to *refactor*.
+	- Cover yourself here with Tests.
+
+---
+#Takeaways
+
+- Use Swift's extensions to declare types.
+	- Don't litter the global namespace.
+	- Improves compile time and code completion.
+	- Very useful with types like VM or Cells that are only used within a class.
