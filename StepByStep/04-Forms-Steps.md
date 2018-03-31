@@ -1,0 +1,28 @@
+- Make the students add a SAVE button anchored to the bottom, to, you know, start the day 
+	- Commit (d4e3f5f)
+- Dump all the view code
+	- Commit (1562500)
+- Create GIFCreateFormValidator and show why it has to be in Kit and why it holds the `Form` in a class
+	- Create all the rules and the errors
+	- Unit test it
+	- (95bd6a8)
+- Create required sections
+	- Show why it must be in the kit (in order for it to be parametrized in case of country/whatever business decision)
+	- Unit test it
+	- Now hook it to the VC and the tableViewDataSource
+	- Show the awesome result (8699ffd)
+- Show the layout issue when turning off the warnings, and fix it (it's the stackView)
+	- (e873e21)
+- Show that form entry sucks because the keyboard is in the way
+	- Add IQKeyboardHandler (88734bb)
+- Start hooking up the cells to the FormValidator
+	- Show how to use tableView.reloadSections
+	- Hook title, subtitle and tags up
+	- Hook error handling up
+	- (123fb9f)
+- Create and hook up GIFSearchVC 	
+	- First, promote GIFCollectionView to it's own class 
+	- Then, just drop it and walkthrough it
+	- (0abd0d0)
+- Add snapshot testing
+	- (a43c10c) 
