@@ -1,0 +1,14 @@
+- Create UITest target
+- Record a GIF creation
+- Show that Keyboard must be hooked up for the recorder to pick it up
+- Refactor text input
+- Refactor cell finding
+- Refactor "next" button tapping
+- Show that it works correctly, but no assertion is there, so is this really a test?
+	- Add it
+	- Show it fail
+	- Fix it
+	- 6bdb152
+- Add a new test to create a GIF without title or anything
+	- Make sure an error is shown
+	- 67e8548 
