@@ -42,7 +42,13 @@
 
 ---
 
-_Video of the app_
+![left](https://youtu.be/tCjinXH4QT8)
+
+# GIf Wallet
+
+- Store GIFs in a handy way to share
+- Integration with Giphy to find new GIFs
+- iPad support
 
 ---
 
@@ -120,7 +126,7 @@ A Module[^1]:
 
 ---
 
-However...
+##However...
 
 ---
 
@@ -139,11 +145,22 @@ In this cases:
 
 ---
 
-#_Demo_
+![left fit](https://i.imgur.com/DXENrh8.png)
 
-^ Create Framework target
-Restructure file system
-Git commit push.
+## App Target
+- Cells and Views
+- ViewController
+- Interactors
+
+## Framework Target
+ 
+- Form validation
+- Data store
+- APIClient
+
+---
+
+##Dependency Management
 
 ---
 
@@ -155,7 +172,7 @@ However, Carthage is also a challenger.
 
 ---
 
-![inline](https://i.imgur.com/saB2GNN.png)
+![inline](https://i.imgur.com/7fC04CZ.png)
 
 ---
 
@@ -167,14 +184,6 @@ However, Carthage is also a challenger.
 
 ---
 
-#_Demo_
-^ Create Podfile
-Add SDWebImage to app Target
-Add Alamofire to Framework Target
-Git commit push.
-
----
-
 ##Schemes for Development and AppStore
 
 ---
@@ -183,41 +192,81 @@ Git commit push.
 
 ---
 
-### We shouldn't use the two target approach
+## We shouldn't use the two target approach
 
 - It 2x `xcodeproj` file's size.
 - It leads to errors when adding new files.
 - It feels dirty.
 
 ---
-### Instead, we should use schemes
+
+## Instead, we should use schemes
 - With schemes we can get the same result.
 - We can parametrize what we need using `xcconfig`
 - It's predictable.
 
 ---
-#_Demo_
-^ Duplicate scheme
-Modify schemes to always do the same things
-Create xcconfig
-Modify build configuration
-Parametrize name
-Parametrize in code
-Git commit push.
+
+#XCConfig
+
+![left](https://i.imgur.com/STnHZkM.png)
+
+- Allows us to parametrize: Bundle ID, Entitlements, Compilation Flags...
+
+- Can be set per scheme.
+
+- Integrates with Cocoapods.
+
+---
+
+![left fit](https://i.imgur.com/mEuorPk.png)
+![right fit](https://i.imgur.com/23um8jn.png)
+
+---
+
+![fit](https://i.imgur.com/SLohiYw.png)
 
 ---
 
 #Tests setup
+
+---
+
+#Tests setup
+
 - Tests should not launch your app's logic.
 - Integrate with Snapshot testing.
 - Separate App Tests from Model tests
 
 ---
-#_Demo_
-^ Add `XCTestCase` check
-Add snapshot tests
-Show how one scheme builds only one test bundle
-Git commit push.
+```swift
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+
+    var window: UIWindow?
+
+    func application(
+    _ application: UIApplication,
+     didFinishLaunchingWithOptions options: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        defer { self.window?.makeKeyAndVisible() }
+
+        guard NSClassFromString("XCTest") == nil else {
+            self.window?.rootViewController = UIViewController()
+            return true
+        }
+
+        self.window?.rootViewController = ...
+        return true
+    }
+}
+
+```
+
+---
+
+#Continous integration
 
 ---
 
@@ -244,8 +293,14 @@ Several options:
 
 ---
 
-#_Demo_
-^ Create bitrise account from github
-Add Repo
-Git commit push.
+![fit](https://i.imgur.com/kxpVMA0.png)
 
+---
+
+![fit](https://i.imgur.com/Cay3j8i.png)
+
+---
+
+![fit](https://i.imgur.com/j0yzj7F.png)
+
+---

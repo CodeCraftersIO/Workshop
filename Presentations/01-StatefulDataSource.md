@@ -40,17 +40,17 @@ In Swift you can be more *explicit* about the state
 
 ```swift
 
-    private func fetchData() {
-        self.collectionView.state = .loading
-        presenter.fetchLocationAndUsers { (result) in
-          switch result {
-          case .failure(let error):
-          	self.collectionView.state = .failure(error)
-          case .success(let users):
-          	self.collectionView.state = .loaded(users)
-          }
-        }
+private func fetchData() {
+  self.collectionView.state = .loading
+  presenter.fetchLocationAndUsers { (result) in
+    switch result {
+    case .failure(let error):
+        self.collectionView.state = .failure(error)
+    case .success(let users):
+        self.collectionView.state = .loaded(users)
     }
+  }
+}
 
 ```
 
