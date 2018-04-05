@@ -69,7 +69,8 @@ theme: Fira, 3
 
 ---
 
-## Bootstrapping
+## [Bootstrapping](https://www.youtube.com/playlist?list=PL3Hgz5X2fCsFI72e8OcAnNJYRf71vBtub)
+
 ![](https://www.surepayroll.com/globalassets/blog-article-images/bootstrapping-benefits-vs-venture-capital.jpg)
 
 ---

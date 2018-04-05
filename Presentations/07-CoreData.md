@@ -1,4 +1,4 @@
-theme: Merriweather, 1
+theme: Merriweather, 4
 
 #CoreData
 
@@ -195,3 +195,27 @@ purity.
 ![fit](https://i.imgur.com/vOnH72u.png)
 
 ---
+
+##NSFetchRequest
+
+- The equivalent of an SQL statement.
+- Searches, creates, filters and limits the objects within a CoreData context.
+- High computational cost, may be async.
+
+---
+
+[.background-color: #FFFFFF]
+![fit](https://i.imgur.com/sYnbMbw.png)
+
+---
+
+##NSFetchedResultsController
+
+- Observes the changes within an `NSFetchRequest` in a *reactive* way.
+- Conceived for integrating with a `UITableView`/`UICollectionView` through a delegate
+- Listens for changes in objects within a context with `NSManagedObjectContextObjectsDidChangeNotification`.
+
+---
+
+[.background-color: #FFFFFF]
+![fit](https://i.imgur.com/23Ml8fs.png)
