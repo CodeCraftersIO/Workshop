@@ -1,3 +1,5 @@
+theme: Fira, 3
+
 ![](https://i.imgur.com/bMN1pjb.png)
 
 ---
@@ -304,3 +306,61 @@ Several options:
 ![fit](https://i.imgur.com/j0yzj7F.png)
 
 ---
+
+# Architecture
+
+- This is just a fancy word to explain how you manage complexity regarding:
+- Presenting and dismissing `UIViewController` instances.
+- Passing data.
+
+---
+
+#ViewController Data
+
+- MVVM allows us to quickly mock data required by a ViewController to display it's contents.
+
+---
+
+[.background-color: #FFFFFF]
+
+![left fit](https://i.imgur.com/Ls5nQb0.png)
+![right fit](https://i.imgur.com/KU66U5Y.jpg)
+
+---
+
+#Data Retrieval
+
+- A type called `Interactor` will create mock/real VM and pass it to the VC.
+- Interactors will be injected into the ViewControllers in the `init`
+
+---
+
+```swift
+class GIFWalletViewController: UIViewController {
+
+    let interactor: GIFWalletInteractorType
+    
+    init(interactor: GIFWalletInteractorType) {
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+    }
+}
+
+protocol GIFWalletInteractorType {
+    func fetchData(handler: @escaping WalletDataHandler)
+}
+```
+---
+
+#ViewController Creation
+
+- It'll also be handled by `Interactor`.
+- However, in a complex app this would not scale correctly, and this class should be split into two: `Repository` and `Wireframe`.
+
+---
+
+#Let's go!
+
+---
+
+![fit](https://i.imgur.com/zbEmgkb.png)

@@ -25,4 +25,4 @@
 	- Then, just drop it and walkthrough it
 	- (0abd0d0)
 - Add snapshot testing
-	- (a43c10c) 
+	- (a43c10c)
