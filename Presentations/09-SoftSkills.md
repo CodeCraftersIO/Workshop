@@ -1,35 +1,45 @@
+theme: Next
+
 # Soft Skills
 
 ---
 
 # Soft Skills
 
-Focus on Deliver results
-Fix Bugs cleanly
-Deal with Technical Debt
-Play well with others
-Know how to write
+- Focus on Deliver results
+- Fix Bugs cleanly
+- Deal with Technical Debt
+- Play well with others
+- Know how to write
 
 
 ---
 
 # Focus on Deliver results
 
-Results
-Focus
-Deliver smaller results often
+---
+
+# Focus on Deliver results
+
+- Results
+- Focus
+- Deliver smaller results often
 
 ---
 
-# What are **results**
+# Focus on Deliver results
+
+## What are **results**?
 
 >A result is something that makes a positive change in how the business works
 
-It can be a feature, bugfix, documentation, or an answer to *anybody needing insight*
+- It can be a feature, bugfix, documentation, or an answer to *anybody needing insight*
 
 ---
 
-# What are **not** results
+# Focus on Deliver results
+
+## What are **not** results?
 
 * An intermediate deliverable
 * A progress report
@@ -38,7 +48,7 @@ It can be a feature, bugfix, documentation, or an answer to *anybody needing ins
 ---
 
 
-# Focus
+# Focus on Deliver results
 
 To keep focus on what you do
 
@@ -46,6 +56,10 @@ To keep focus on what you do
 * Take promises seriously
 * Deliver small results more often
 
+
+---
+
+# Fix Bugs cleanly
 
 ---
 
@@ -61,7 +75,9 @@ Repeatable process
 
 ---
 
-# Understand the problem
+# Fix Bugs cleanly
+
+## Understand the problem
 
 Agile does not mean _just start coding_
 
@@ -71,14 +87,18 @@ Agile does not mean _just start coding_
 
 ---
 
-# Write tests that fail
+# Fix Bugs cleanly
 
-Should we loose time to write tests that fail?
->Top developers do not ask for permission to do their jobs
+## Write tests that fail
+
+- Do we have to lose time to write tests that fail?
+> Top developers do not ask for permission to do their jobs
 
 ---
 
-# Write tests that fail
+# Fix Bugs cleanly
+
+## Write tests that fail
 
 It's a To Do list of the features
 
@@ -99,7 +119,8 @@ Once done, the work is **not** done, so we don't need to report your progress
 
 ---
 
-# Refactor the code
+# Fix Bugs cleanly
+## Refactor the code
 
 Goal: Make the code readable and maintainable
 
@@ -111,23 +132,24 @@ Goal: Make the code readable and maintainable
 
 ---
 
-# Refactor - Comments
+# Fix Bugs cleanly
+## Refactor - Comments
 
-When we face a piece of code with comments, that is a place you might consider refactoring
-Most of the times, good code does not need comments (but not always!)
-Use comments to explain **why**, not **what**
+- When we face a piece of code with comments, that is a place you might consider refactoring
+- Most of the times, good code does not need comments (but not always!)
+- Use comments to explain **why**, not **what**
 
 ---
 
-# Commit your changes
+# Fix Bugs cleanly
+## Commit your changes
 
-Take special care to write a good message
-*First line*: What the change is
-*Other lines*:
+- Take special care to write a good message
+- *First line*: What the change is
+- *Other lines*:
 
-- a link to the issue
-- details about conversations about that
-- explain why you did things, especially if done in an odd way
+	- A link to the issue or details about conversations about it.
+	- Explain why you did things, especially if solution isn't perfect.
 
 ---
 
@@ -144,9 +166,9 @@ Take special care to write a good message
 
 # What is **not** TECHDEBT === SLOP
 
-* copy-pasted code, repeated elsewhere
-* wrongly named variables/methods
-* unused code
+* Copy-pasted code, repeated elsewhere
+* Wrongly named variables/methods
+* Unused code
 
 If it works, should you ship this code?
 
@@ -163,7 +185,7 @@ If it works, should you ship this code?
 
 **NO**
 
->it needs to be addressed now, before it infects the system
+>It needs to be addressed now, before it infects the system
 
 
 ---
@@ -244,19 +266,19 @@ class Order {
 
 # Why is SLOP bad?
 
-Duplicates behaviors
-Obscures the intent
-Needs more training for future devs
-	++ comments
-	++ tests
+- Duplicates behaviors
+- Obscures the intent
+- Needs more training for future devs
+	- ++ Comments
+	- ++ Tests
 
 ---
 
 # What **is** TECHDEBT
 
-Code to fix later (or never)
-Future-features, but not now-features
-Tradeoffs taken in a controlled way
+- Code to fix later (or never)
+- Future-features, but not now-features
+- Tradeoffs taken in a controlled way
 
 ---
 
@@ -322,8 +344,8 @@ No one knows what will be the shape of the code in the future
 
 No one knows what will be the shape of the code in the future
 
-- when (if ever) will the feature be needed
-- what constraints will a feature meet
+- When (if ever) will the feature be needed
+- What constraints will a feature meet
 
 --
 
@@ -334,14 +356,12 @@ No one knows what will be the shape of the code in the future
 
 # Play well with others
 
-
-
 ---
 
 # Play well with others
 
 We need a way to communicate with actual human beings
-to do that, we need to
+to do that, we need to:
 
 * Empathize with others
 * Adapt Information
@@ -349,7 +369,8 @@ to do that, we need to
 
 ---
 
-# Empathize with others
+# Play well with others
+## Empathize with others
 
 Understand people different from you:
 
@@ -359,32 +380,36 @@ Understand people different from you:
 
 ---
 
-# Empathize with others
+# Play well with others
+## Empathize with others
 
-They don't know how to do what you do.
-
----
-
-# Empathize with others
-
-They don't know how to do what you do.
-They don't have the vocabulary to know what to ask.
+- They don't know how to do what you do.
 
 ---
 
-# Empathize with others
+# Play well with others
+## Empathize with others
 
-They don't know how to do what you do.
-They don't have the vocabulary to know what to ask.
-They don't know what they don't know, so they make *wrong assumptions*.
+- They don't know how to do what you do.
+- They don't have the vocabulary to know what to ask.
 
 ---
 
-# Empathize with others
+# Play well with others
+## Empathize with others
 
-They don't know how to do what you do.
-They don't have the vocabulary to know what to ask.
-They don't know what they don't know, so they make *wrong assumptions*.
+- They don't know how to do what you do.
+- They don't have the vocabulary to know what to ask.
+- They don't know what they don't know, so they make *wrong assumptions*.
+
+---
+
+# Play well with others
+## Empathize with others
+
+- They don't know how to do what you do.
+- They don't have the vocabulary to know what to ask.
+- They don't know what they don't know, so they make *wrong assumptions*.
 
 --
 
@@ -392,30 +417,31 @@ They don't know what they don't know, so they make *wrong assumptions*.
 
 ---
 
-# Empathize with others
+# Play well with others
+## Empathize with others
 
 They work on a totally different set of priorities
 
-We need to to understand them
-We need to make ourselves understood
-
-We have to push back when asked to solve the *wrong problem*
+- We need to to understand them.
+- We need to make ourselves understood.
+- We have to push back when asked to solve the *wrong problem*.
 
 ...so we need to **adapt** terms and **abstract** concepts
 
 ---
 
-# Adapt Terms
+# Play well with others
+## Adapt Terms
 
 * Avoid technical jargon
 * Use longer descriptive sentences instead of jargon
 * Do not talk down
 * Listen carefully to others, ask if you're not 100% sure
 
-
 ---
 
-# Abstract Concepts
+# Play well with others
+## Abstract Concepts
 
 * Avoid technical details
 * Explain things using analogies
@@ -431,10 +457,10 @@ We have to push back when asked to solve the *wrong problem*
 ---
 
 
->we ultimately code not for machines,
+> We ultimately code not for machines,
 
-> but for people to use,
+> But for people to use,
 
-> understand and make it grow
+> Understand and make it grow
 
 ---
