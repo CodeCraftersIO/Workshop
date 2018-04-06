@@ -274,7 +274,7 @@ class Order {
 
 ---
 
-# What **is** TECHDEBT
+# What **is** TECHDEBT?
 
 - Code to fix later (or never)
 - Future-features, but not now-features
@@ -282,7 +282,7 @@ class Order {
 
 ---
 
-# What **is** TECHDEBT
+# What **is** TECHDEBT?
 
 ```swift
 class DiscountCode {
@@ -300,7 +300,7 @@ class Order {
 
 ---
 
-# What **is** TECHDEBT
+# What **is** TECHDEBT?
 
 ```swift
 class DiscountCodeInteractor {
@@ -330,7 +330,7 @@ class DiscountCode {
 
 ---
 
-# Why TECHDEBT is **good**
+# Why is TECHDEBT **good**?
 
 No one knows what will be the shape of the code in the future
 
@@ -340,7 +340,7 @@ No one knows what will be the shape of the code in the future
 ---
 
 
-# Why TECHDEBT is **good**
+# Why is TECHDEBT **good**?
 
 No one knows what will be the shape of the code in the future
 
@@ -462,5 +462,22 @@ They work on a totally different set of priorities
 > But for people to use,
 
 > Understand and make it grow
+
+---
+
+# Invest time in your team:
+
+- Document throughly your Pull Requests
+	- PRs with more than 300 lines of code
+	- One line fixes for complex issues
+- Explain the causes of your patch
+- Make the documentation easy to index/search
+	- Use Github   
+
+---
+
+###For more, please read ["The Senior Software Engineer"](http://theseniorsoftwareengineer.com) by David Copeland  
+
+![left fit](http://theseniorsoftwareengineer.com/images/cover.png)
 
 ---

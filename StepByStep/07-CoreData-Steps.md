@@ -1,5 +1,5 @@
 
-- Branch off Promises
+- Branch off Promises (3765ad8)
 - Create DataStore and DataStoreTests
 - Add `let persistentStore: NSPersistentContainer` coordinator property and attempt to init
 - See that it asks for a Model, start creating one
