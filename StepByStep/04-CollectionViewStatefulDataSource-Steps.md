@@ -1,11 +1,6 @@
 StatefulDataSource
 
-Step 0 (Checkout 63e7226):
-
-- Show VC and UICollectionViewCell code as-is, there'll be time to dig in later
-- Show how the collectionView is created and FlowLayout is created
-
-Step 1 (finished at 3531555):
+Step 1 (finished at 43db272):
 
 - Begin creating ListState<T> and show how it should look:
 
@@ -38,7 +33,7 @@ dataSource = CollectionViewStatefulDataSource(
   cellType: GifCell.self
 )
 ```
-Step 2 (finished at 00a38ae):
+Step 2 (finished at e586421):
 
 - Try to do cell.configureFor(model) and see that the cell doesn't have that method
 - Create GIFViewModelConfigurable without associatedType
@@ -83,16 +78,10 @@ protocol ViewModelConfigurable {
 Step 3.X with students:
 
 - Create extension to collectionView to avoid stringly typed register/dequeue (296d186)
-- Add states for loading/empty/error (07bbf5c)
-	- Close all the loop using an interactor to mock the network request (fc758bd)
-
+- Add states for loading(a49f2f7)
 - Make them choose between:
+	- Empty and error states 
 	- Pull to Refresh
 	- Reorder
 	- State customization 
-
-## Snapshot tests:
-
-- CopyPaste GIFWalletSnapshotTest
-	- Explain that the image download has to be disabled in order for tests to be correct.
-	- Add customization to the interactor
+	- Snapshot tests

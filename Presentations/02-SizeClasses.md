@@ -1,13 +1,13 @@
-theme: Zurich, 1
+theme: Zurich-Better
 
 
 # Size Classes
 
 ---
 
-![fit](https://i.imgur.com/nQamAPg.png)
+![fit](https://i.imgur.com/GF1n758.png)
 
-[.background-color: #FFFFFF]
+[.background-color: #f2f2f2]
 
 ---
 
@@ -29,15 +29,20 @@ theme: Zurich, 1
 
 ---
 
+![fit](https://2e8ram2s1li74atce18qz5y1-wpengine.netdna-ssl.com/wp-content/uploads/2018/06/Apple-Marzipan-iOS-macOS-AppKit-UIKit-Dice-1024x484.jpg)
+
+---
+
 #Size classes allows us to adapt the interface, not only to screen sizes, but to different devices. 
 
 ![inline](https://i.imgur.com/RxlWLKJ.png)
 
 ---
 
-![fit](https://developer.apple.com/library/content/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_AdaptiveModel_13-1_2x.png)
+![fit](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/Art/VCPG_Adaptive-Model_13-1_2x.png)
 
 [.background-color: #FFFFFF]
+
 
 ---
 

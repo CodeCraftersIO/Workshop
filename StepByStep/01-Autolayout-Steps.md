@@ -1,38 +1,36 @@
 # AutolayoutTests
 
-- Create `AutolayoutTestsVC` and show how the system can figure out the size using intrinsicContentSize:
+- Checkout `5e20420`. Show `AutolayoutTestsVC` and how the system can figure out the size using intrinsicContentSize:
 
-```swift
-class AutoLayoutTestsViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let redView = RedView(frame: .zero)
-        view.addSubview(redView)
+- Show how the layout system can figure out intrinsicContentSize for views with enough constraints:
+	- Add a label with margins:
 
-        // Specify origin
-        redView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        redView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-    }
-}
-
+```
 class RedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .red
-    }
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Code Crafters"
+        self.addSubview(label)
 
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 50, height: 50)
+        self.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            label.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            label.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
+            ])
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }
+
 ```
-
-- Show how the layout system can figure out intrinsicContentSize for views with enough constraints:
-	- Add a label with margins
-
+- Safe Areas:
+	- Start by adding the RedView to the top of the view and showing how it grows. 
 - Show how safeAreaInsets are propagated into subviews by printing it:
 
 ```swift
@@ -42,22 +40,25 @@ override func viewDidAppear(_ animated: Bool) {
   print(redView.safeAreaInsets)
 }
 ``` 
+	- Remove the RedView and add a GradientView as background
+	- Re-add the RedView to the top. Run the app on iPhoneX, show that it grows even more. 
+
 
 #DetailVC
 
-Checkout `2815a7f` and show the core around:
+Checkout `0a24ec1` and show the core around:
 
 - Show the VM of the details.
 - Explain the interactor part and the async
-- Explain the mock loade changes
+- Explain the mock load changes
 
 
 ## All constraints approach
 - Let's add the GIFImageView
 - Notice that if you forget translatesAutoresizingMaskIntoConstraints shit happens. 
 - Create `addAutolayoutView`
-- Add `pod 'TagListView', '~> 1.0'`
-- Create all the view using just constraints (`7d0e691`)
+- Add `pod 'TagListView', '~> 1.3.2'`
+- Create all the view using just constraints (`c57389e`)
 
 - 
 ```swift
@@ -126,6 +127,7 @@ containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
 ## Full stackView approach
 
+- Having a container view, a stackView and an imageView feels dirty. We could have everything inside a stackView and use that as the containerView
 - Use stackView as containerView
 
 ```swift
@@ -146,7 +148,7 @@ private let scrollView: UIScrollView = {
 
 ## Cleanup:
 
-- Refactor UILabel creation (58eaf7a)
+- Refactor UILabel creation (1ff0141)
 
 ```swift
 extension UILabel {
@@ -160,7 +162,7 @@ extension UILabel {
     }
 }
 ```
-- Fix imageView aspect ratio (f0b9bc3)
+- Fix imageView aspect ratio (f7e11bb)
 
 ```swift
 self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
@@ -170,11 +172,30 @@ self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
 }
 ```
 
-- Maybe create a `ScrollableStackView` subclass
+- For Students: Create a `ScrollableStackView` subclass
 
 ## Rotation:
 
 ![](https://i.imgur.com/GxhBrst.jpg)
+
+- Start with basic support:
+
+```swift
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { (context) in
+            self.configureStackViews(forContainerViewSize: size)
+        }, completion: nil)
+    }
+    
+    private func configureStackViews(forContainerViewSize size: CGSize) {
+        if size.width > size.height {
+            self.containerStackView.axis = .horizontal
+        } else {
+            self.containerStackView.axis = .vertical
+        }
+    }
+```
 
 - Show that we'll need some spacing views:
 
@@ -220,10 +241,11 @@ private func configureStackViews(forContainerViewSize size: CGSize) {
 
 ```
 
-- All ready on d9b78dd
+- All ready on bc02ff4
 
 #Snapshot tests
 
+- Start with `efce8ed` and show the code around.
 - Show that the imageView is all shrunk since there is no aspectRatio
 	- Create one at 1:1 and then set it on the download block in order to make the test more real
 

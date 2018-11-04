@@ -139,9 +139,6 @@ class ProfileViewControllerTests: BSWSnapshotTest {
     }
 }
 ```
----
-
-![fit](https://www.objc.io/images/issue-15/snapshots-reference-59b0b96b.png)
 
 ---
 

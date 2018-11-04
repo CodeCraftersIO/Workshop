@@ -4,49 +4,7 @@
 	- Show how it is called on the ViewController and also on UIView subclass
 	- Propose this problem https://i.imgur.com/klNG51U.png 
 
-# Tweak GIFWalletVC
-
-- Add more than one column on iPad using `willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator)` (9b94378)
-
-```swift
-private func configureCollectionViewLayout(forHorizontalSizeClass horizontalSizeClass: UIUserInterfaceSizeClass) {
-  let numberOfColumns: Int
-  switch horizontalSizeClass {
-    case .regular:
-      numberOfColumns = 2
-    default:
-      numberOfColumns = 1
-    }
-  collectionViewLayout.itemSize = CGSize(
-    width: self.view.frame.width / CGFloat(numberOfColumns),
-    height: Constants.cellHeight
-  )
- }
-```
-
-- Show how it looks like crap on iPad landscape
-- Show that it's impossible using Apple's API to take into account both newSize and newCollection. Create wrapper to workaround it (45ebea6)
-
-```swift
-import ObjectiveC
-
-private var xoAssociationKey: UInt8 = 0
-
-extension UIViewControllerTransitionCoordinator {
-    var newCollection: UITraitCollection? {
-        get {
-            return objc_getAssociatedObject(self, &xoAssociationKey) as? UITraitCollection
-        }
-        set(newValue) {
-            objc_setAssociatedObject(self, &xoAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-}
-```
-
-- Add snapshot tests
-
-- Add a share button to DetailVC and use PopoverPresentation (2161086)
+- Add a share button to DetailVC and use PopoverPresentation (3f29cb1)
 
 ```swift
     @objc func shareGIF() {
@@ -85,6 +43,9 @@ extension UINavigationController {
 }
 ```
 
+# Modal presentation
+
+- Let's create GIFWalletViewController
 - Add a + Button
 	- Present GIFFormVC (`9faf793`)
 

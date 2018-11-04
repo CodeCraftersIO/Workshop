@@ -1,6 +1,6 @@
 theme: Fira, 3
 
-![](https://i.imgur.com/bMN1pjb.png)
+![](http://codecrafters.io/static/logocc.b146854e.png)
 
 ---
 
@@ -10,8 +10,9 @@ theme: Fira, 3
 ---
 ## **What we'll cover**
 
-- Stateful ViewControllers. ⏳
 - Size classes & Autolayout. ☠️
+- Automatic Cell Sizing 📐
+- Stateful ViewControllers. ⏳
 - Networking and Promises. 🎁
 - Forms 📖
 - CoreData ⚙️
@@ -56,11 +57,11 @@ theme: Fira, 3
 
 ###Schedule:
 
-|   **Friday**  |    **Saturday**   |   **Sunday**	|
-| ----------- | :-----------: | -----------: |
-| Stateful VC        |    Networking    |    CoreData    |
-| Autolayout        |   Promises    |   UITests   |
-| Size Classes        |   Forms    |   Soft Skills   |
+|   **Fri 9**  |    **Sat 10**   |   **Fri 16** |    **Sat 17**	|
+| :-----------: | :-----------: | :-----------: | :-----------: |
+| Autolayout        | Stateful VC |    Networking    | CoreData    |
+| Size Classes 		| Forms 		 |   Promises   | UI Tests   |
+| Self-Sizing Cells |  👨‍💻			 |    👩🏽‍💻 | Soft Skills   |
 
 
 ---

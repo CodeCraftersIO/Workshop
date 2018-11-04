@@ -259,6 +259,15 @@ Prevents showing content underneath:
 
 ---
 
+#Safe Area Layout Guide
+
+- All `UIControl`s in your view must respect this
+
+
+![left fit](https://i.imgur.com/0QLeB9O.jpg)
+
+---
+
 #Custom guides:
 
 ![inline](https://useyourloaf.com/assets/images/2016/2016-02-27-001.png)
