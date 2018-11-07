@@ -216,6 +216,10 @@ self.imageView.sd_setImage(with: vm.url) { (image, _, _, _) in
 private var landscapeConstraints: [NSLayoutConstraint]!
 private var portraitConstraints: [NSLayoutConstraint]!
 
+// Iin the regular constraints setting
+        topSpacingView.heightAnchor.constraint(equalTo: bottomSpacingView.heightAnchor),
+
+
 ...
         portraitConstraints = [
             topSpacingView.heightAnchor.constraint(lessThanOrEqualToConstant: 0),
@@ -239,6 +243,13 @@ private func configureStackViews(forContainerViewSize size: CGSize) {
 	}
 }
 
+
+// In configureForViewModel, after the image is retrieved (remove prev line setting the same constraint)
+  let aspectRatioConstraint = self.imageView.widthAnchor.constraint(equalTo: self.imageView.heightAnchor, multiplier: aspectRatio)
+  aspectRatioConstraint.priority = .defaultHigh
+  aspectRatioConstraint.isActive = true
+
+
 ```
 
 - All ready on bc02ff4
@@ -246,6 +257,8 @@ private func configureStackViews(forContainerViewSize size: CGSize) {
 #Snapshot tests
 
 - Start with `efce8ed` and show the code around.
+- Show that the snapshot tests are not passing due to the image being downloaded, taking time to do so.
+- Change the downloading of the image to use our custom wrapper from the UIImageView extension instead.
 - Show that the imageView is all shrunk since there is no aspectRatio
 	- Create one at 1:1 and then set it on the download block in order to make the test more real
 
