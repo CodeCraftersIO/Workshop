@@ -1,40 +1,37 @@
-- Make the students create a SnapshotTest for GIFCreateViewController
+**Start**
 
-```swift
-@testable import GifWallet
+- Go to commit `68aaf45`
+- Show the code around:
+	- Explain the addition of GenerateScreenshots.sh
+	- Added test for GIFCreateViewController
 
-class GIFCreateViewControllerTests: SnapshotTest {
-    
-    func testSnapshotViewController() {
-        let vc = GIFCreateViewController.Factory.viewController()
-        debugViewController(vc)
-    }    
-}
-```
-
-- Make the students add a SAVE button anchored to the bottom, to, you know, start the day 
-	- Commit (d4e3f5f)
+- Make the students add a SAVE button anchored to the bottom	- Commit (d4e3f5f)
 
 **Create SaveButton.swift**
 
 ```swift
 import UIKit
 
-class SaveButton: UIButton {
-
+final class SaveButton: UIButton {
+    
     private enum Constants {
-        static let Padding: CGFloat = 10
+        static let padding: CGFloat = 10
     }
-
+    
     init() {
         super.init(frame: .zero)
-        backgroundColor = UIColor.GifWallet.brand
-        setTitle("Save", for: .normal)
+        setup()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setup() {
+        backgroundColor = UIColor.GifWallet.brand
+        setTitle("Save", for: .normal)
+    }
+    
     override func safeAreaInsetsDidChange() {
         super.safeAreaInsetsDidChange()
         self.titleEdgeInsets = UIEdgeInsets.init(
@@ -44,12 +41,13 @@ class SaveButton: UIButton {
             right: 0
         )
         self.contentEdgeInsets = UIEdgeInsets.init(
-            top: self.safeAreaInsets.top + Constants.Padding,
-            left: self.safeAreaInsets.left + Constants.Padding,
-            bottom: self.safeAreaInsets.bottom + Constants.Padding,
-            right: self.safeAreaInsets.right + Constants.Padding
+            top: self.safeAreaInsets.top + Constants.padding,
+            left: self.safeAreaInsets.left + Constants.padding,
+            bottom: self.safeAreaInsets.bottom + Constants.padding,
+            right: self.safeAreaInsets.right + Constants.padding
         )
     }
+
 }
 
 ```
@@ -75,16 +73,31 @@ private func layout() {
 }
 ```
 
-But also, we'll override viewDidLayoutSubviews
+- Show the result at `dd15760`
+- Add the tableview and the datasource, at `36ba294`
+	- Show that the insets on the top are OK, but not so much at the bottom
+	- Show that the insets at the bottom are those respecting safe area.
+ 
+```swift
+private func setupTableView() {
+        view.addAutolayoutView(tableView)
+        tableView.pinToSuperview()
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ReuseID")
+    }
+```
+
+- Add the insets to account for the height of the bottom button
+	- override viewDidLayoutSubviews
 
 ```swift
 override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     tableView.contentInset = UIEdgeInsets(
-        top: tableView.contentInset.top + 0,
-        left: tableView.contentInset.left + 0,
-        bottom: tableView.contentInset.bottom + saveButton.frame.size.height,
-        right: tableView.contentInset.right + 0
+        top: 0,
+        left: 0,
+        bottom: saveButton.frame.size.height,
+        right: 0
     )
 }
 ```
@@ -102,34 +115,12 @@ and
 }
 ```
 
-and UITableViewDataSource methods
-
-```swift
-private func setupTableView() {
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ReuseID")
-    tableView.dataSource = self
-}
-
-//MARK: UITableViewDataSource
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 20
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseID")
-    cell?.textLabel?.text = "HelloWorld"
-    return cell!
-}
-```
-
-
 - Dump all the view code
-	- Commit (1562500)
-
+	- Commit (edabd3c)
 	- We've created
 		- FormTableViewCell
 		- (Text/GIF/Tags)InputView
+		- RegisterCells with Generics
 		- Added many things to GIFCreateVC
 
 
@@ -341,9 +332,30 @@ return tableViewCell
 ```
 
 - Show the layout issue when turning off the warnings, and fix it (it's the stackView)
-	- (e873e21)
+	- (606a5e0)
+
+```swift
+cell.configureFor(vm: FormTableViewCell<GIFInputView>.VM(inputVM: GIFInputView.VM(id: nil, url: nil), showsWarning: false))
+...                
+cell.configureFor(vm: FormTableViewCell<TextInputView>.VM(inputVM: TextInputView.VM(text: nil), showsWarning: false))
+...
+cell.configureFor(vm: FormTableViewCell<TagsInputView>.VM(inputVM: TagsInputView.VM(tags: []), showsWarning: false))
+```
+
+```swift
+FormTableViewCell.swift
+//At stackview
+stackView.distribution = .fill
+...
+//At warningIcon
+let widthConstraint = imageView.widthAnchor.constraint(equalToConstant: image.size.width)
+widthConstraint.priority = .defaultLow
+widthConstraint.isActive = true
+```
+
+	
 - Show that form entry sucks because the keyboard is in the way
-	- Add IQKeyboardHandler (88734bb)
+	- Add IQKeyboardHandler (61c107c)
 	
 - Start hooking up the cells to the FormValidator
 	- Show how to use tableView.reloadSections
@@ -399,10 +411,11 @@ cell.formInputView.tag = TextInputTags.title.rawValue
 ```
 
 - 
-	- (123fb9f)
+	- (2c60644)
 - Create and hook up GIFSearchVC 	
 	- First, promote GIFCollectionView to it's own class 
 	- Then, just drop it and walkthrough it
-	- (0abd0d0)
-- Add snapshot testing
-	- (a43c10c)
+	- (e54fc43)
+- (f3ab441)
+	- Show merge bug that appears when calling twice setupTableView()
+	- Add snapshot testing 
