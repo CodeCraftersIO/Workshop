@@ -1,6 +1,6 @@
 # AutolayoutTests
 
-- Checkout `5e20420`. Show `AutolayoutTestsVC` and how the system can figure out the size using intrinsicContentSize:
+- Checkout `5e20420`. Show `AutolayoutTestsVC` and how the system can figure out the size using `intrinsicContentSize` using iPhone SE:
 
 - Show how the layout system can figure out intrinsicContentSize for views with enough constraints:
 	- Add a label with margins:
@@ -16,12 +16,11 @@ class RedView: UIView {
         label.text = "Code Crafters"
         self.addSubview(label)
 
-        self.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-            label.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
-            label.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor)
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
             ])
     }
 
@@ -40,8 +39,8 @@ override func viewDidAppear(_ animated: Bool) {
   print(redView.safeAreaInsets)
 }
 ``` 
-	- Remove the RedView and add a GradientView as background
-	- Re-add the RedView to the top. Run the app on iPhoneX, show that it grows even more. 
+- Remove the RedView and add a GradientView as background
+- Re-add the RedView to the top. Run the app on iPhoneX, show that it grows even more. 
 
 
 #DetailVC
