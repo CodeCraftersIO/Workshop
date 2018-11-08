@@ -108,7 +108,7 @@ self.view.addAutolayoutView(stackView)
 let scrollView = UIScrollView()
 scrollView.alwaysBounceVertical = true
 self.view.addAutolayoutView(scrollView)
-scrollView.pinToSuperviewSafeLayoutEdges()
+scrollView.pinToSuperview()
 let containerView = UIView()
 scrollView.addAutolayoutView(containerView)
 containerView.pinToSuperview()
@@ -118,9 +118,28 @@ containerView.addAutolayoutView(self.imageView)
 containerView.addAutolayoutView(detailsStackView)
 ```
 
+
+add pinToSuperview()
+
+```swift
+    public func pinToSuperview(withEdges edges: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) {
+        guard let superView = superview else { return }
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: edges.left),
+            trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: -edges.right),
+            topAnchor.constraint(equalTo: superView.topAnchor, constant: edges.top),
+            bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -edges.bottom)
+            ])
+    }
+```
+
 - Rememeber to add:
 
 ```swift
+let layoutMargins = containerView
+...
+stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
 containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 ```
 
@@ -152,7 +171,7 @@ private let scrollView: UIScrollView = {
 ```swift
 extension UILabel {
 
-    public static func autolayoutLabelWith(textStyle style: UIFontTextStyle) -> UILabel {
+    public static func autolayoutLabelWith(textStyle style: UIFont.TextStyle) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.preferredFont(forTextStyle: style)
@@ -251,7 +270,7 @@ private func configureStackViews(forContainerViewSize size: CGSize) {
 
 ```
 
-- All ready on bc02ff4
+- All ready on `bc02ff4`
 
 #Snapshot tests
 
