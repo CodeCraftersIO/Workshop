@@ -5,7 +5,7 @@ theme: Titillium, 1
 ---
 
 #Forms
-### We will build a form to save a new GIF to Persistence layer.
+ We will build a form to save a new GIF to Persistence layer.
 
 ---
 #Forms
@@ -112,7 +112,7 @@ All of them have its pros and cons.
 ###TL;DR:
 * For **reduced size** of forms or ones that will never grow (i.e. login), use UIStackView approach
 * For **regular** forms, which can grow but are always stacked the same (i.e. personal data form)
-* For **highly customized** forms _maybe_ consider UICollectionView
+* For **highly customized** forms consider UICollectionView
 * Almost never consider regular UIView approach.
 
 ---

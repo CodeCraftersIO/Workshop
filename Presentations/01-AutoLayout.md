@@ -157,10 +157,10 @@ NSLayoutConstraint.activate([
 
 Adding a constraint will indirectly call `setNeedsLayout` to a view, triggering a layout pass where the layout system will:
 
-- Finds the top-most view (normally visible's `UIViewController`'s view)
-- Resolve the top-most view hierarhy using the screen size.
+1. Finds the top-most view (normally the `UIWindow`'s root view controller)
+2. Resolve the top-most view hierarhy using the window size.
 	- Positions and sizes for the top-most view's subviews will be resolved.
-- The layout system will recursively resolve the subviews hierarcy based on the size of all the subviews.
+3. The layout system will recursively resolve the subviews hierarcy based on the size of all the subviews.
 
 ---
 ##Layout cycle: customization
@@ -264,7 +264,7 @@ Prevents showing content underneath:
 - All `UIControl`s in your view must respect this
 
 
-![left fit](https://i.imgur.com/0QLeB9O.jpg)
+![left fit](https://i.imgur.com/5MaXAE4.jpg)
 
 ---
 

@@ -1,7 +1,7 @@
 theme: Zurich-Better
 
 
-# Size Classes
+# Trait Collections
 
 ---
 
@@ -11,7 +11,7 @@ theme: Zurich-Better
 
 ---
 
-![fit](https://cdn-images-1.medium.com/max/1600/1*p3LpnONBrM-XjoC9O-Gd4A.png)
+![fit](https://i.imgur.com/dSBsux8.png)
 
 [.background-color: #f0f0f0]
 
@@ -33,7 +33,7 @@ theme: Zurich-Better
 
 ---
 
-#Size classes allows us to adapt the interface, not only to screen sizes, but to different devices. 
+#Trait collections allows us to adapt the interface, not only to screen sizes, but to different devices. 
 
 ![inline](https://i.imgur.com/RxlWLKJ.png)
 

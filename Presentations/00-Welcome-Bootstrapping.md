@@ -1,6 +1,6 @@
 theme: Fira, 3
 
-![](http://codecrafters.io/static/logocc.b146854e.png)
+![fit](http://codecrafters.io/static/logocc.b146854e.png)
 
 ---
 
@@ -125,8 +125,15 @@ A Module[^1]:
 
 ---
 
-`UIKit` → UI Module → App
-`Foundation` → Foundation Module → Framework
+```swift
+import UIKit
+```
+UI Module → App
+
+```swift
+import Foundation
+```
+Logic Model → Framework
 
 ---
 
@@ -142,19 +149,12 @@ A Module[^1]:
 
 ---
 
-In this cases:
-
-`UIKit` → UI Module → Framework
-`Foundation` → Foundation Module → Framework
-
----
-
 ![left fit](https://i.imgur.com/DXENrh8.png)
 
 ## App Target
 - Cells and Views
 - ViewController
-- Interactors
+- Presenters
 
 ## Framework Target
  
@@ -332,23 +332,23 @@ Several options:
 
 #Data Retrieval
 
-- A type called `Interactor` will create mock/real VM and pass it to the VC.
-- Interactors will be injected into the ViewControllers in the `init`
+- A type called `Presenter` will create mock/real VM and pass it to the VC.
+- Presenter will be injected into the ViewControllers in the `init`
 
 ---
 
 ```swift
 class GIFWalletViewController: UIViewController {
 
-    let interactor: GIFWalletInteractorType
+    let presenter: GIFPresenterInteractorType
     
-    init(interactor: GIFWalletInteractorType) {
+    init(interactor: GIFPresenterInteractorType) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
 }
 
-protocol GIFWalletInteractorType {
+protocol GIFPresenterInteractorType {
     func fetchData(handler: @escaping WalletDataHandler)
 }
 ```
@@ -356,7 +356,7 @@ protocol GIFWalletInteractorType {
 
 #ViewController Creation
 
-- It'll also be handled by `Interactor`.
+- It'll also be handled by `Presenter`.
 - However, in a complex app this would not scale correctly, and this class should be split into two: `Repository` and `Wireframe`.
 
 ---

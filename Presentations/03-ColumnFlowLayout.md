@@ -177,7 +177,7 @@ open class UICollectionViewLayoutAttributes : NSObject, NSCopying, UIDynamicItem
 #`estimatedItemSize`
 
 - Hints to `UICollectionViewFlowLayout` about the probable size of a cell.
-	- Enables first layout pass without querying doing the math for every cell before they're visible.
+	- Enables first layout pass to do the math for every cell before they're visible.
 
 ---
 
@@ -206,7 +206,6 @@ $$
 cellHeight=f(cellWidth,cellContent)
 $$
 
-
 ---
 
 # First conclusions:
@@ -214,7 +213,6 @@ $$
 - Now you know why these terms are used interchangeably: 
 	- `Automatic cell sizing`
 	- `Flow layout automatic sizing` 
-
 
 ---
 
