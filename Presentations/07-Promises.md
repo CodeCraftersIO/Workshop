@@ -1,4 +1,4 @@
-theme: Titillium, 1
+theme: Libre, 1
 
 # Promises 🎁
 
@@ -218,6 +218,10 @@ func fetchProductsAndUsers(handler: @escaping (Void) -> Void) {
 	}
 }
 ```
+---
+
+![fit](https://pbs.twimg.com/media/CoYTcBFXgAAjoA-.jpg:large)
+
 ---
 
 #Let's add some Swift

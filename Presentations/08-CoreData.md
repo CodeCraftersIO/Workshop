@@ -72,7 +72,9 @@ purity.
 
 ![left fit](https://i.imgur.com/54IwgrB.png)
 
-###`Model.xcdatamodeld` -> 🔂 -> `Model.momd`
+##`Model.xcdatamodeld` 
+##🛠
+##`Model.momd`
 
 ---
 
@@ -91,7 +93,7 @@ purity.
 ##NSManagedObject
 
 - Contains properties, relationships and helper methods to modify these.
-	- Only mody relationships via the *accessors* ⚠️ 
+	- Only modify relationships via the *accessors* ⚠️ 
 
 - Relationships are unordered by default.
 
