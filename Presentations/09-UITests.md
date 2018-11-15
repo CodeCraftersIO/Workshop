@@ -104,11 +104,11 @@ if ProcessInfo.processInfo.arguments.contains("UITests") {
 - Use this to create mock Interactors instead
 
 ```swift
-let interactor: GIFWalletInteractorType = {
+let presenter: GIFWalletPresenterType = {
 	if ProcessInfo.processInfo.arguments.contains("UITests") {
-		return GIFWalletViewController.MockDataInteractor()
+		return GIFWalletViewController.MockDataPresenter()
             } else {
-		return GIFWalletViewController.Interactor(dataStore: dataStore)
+		return GIFWalletViewController.Presenter(dataStore: dataStore)
 	}
 }()
 ```
