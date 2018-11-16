@@ -1,5 +1,5 @@
 
-- Branch off Promises (3765ad8)
+- Branch off Promises (2dc4ecf)
 - Create DataStore and DataStoreTests
 - Add `let persistentStore: NSPersistentContainer` coordinator property and attempt to init
 - See that it asks for a Model, start creating one
@@ -13,19 +13,19 @@
 	- Show that the model is compiled from `xcdatamodel` to `momd`
 - Show how `loadPersistentStores` is sync by default
 	- Explain the tradeoffs of this, specially on migration.
-	- This is step 0 (14b7564)
+	- This is step 0 (4a91dbe)
 
 - Add an initializer using Promises.
 	- Attemt to run the init from the unit tests, show that it passes, even if the store isn't loaded.
 	- Show that a Log is shown when attempting to use a MOC.
 	- Add a simple Bool flag called `storeIsReady` and make a test that fails it
 	- Use promises to wrap the test and make a test that passes
-	- This is step 1 (658570d)
+	- This is step 1 (e812c31)
 	
 - Show that the simulator has now created a sqlite database using:
-	- open `xcrun simctl get_app_container booted com.codecrafters.gifwallet.dev data` -a Finder
+	- On Terminal `xcrun simctl get_app_container booted com.codecrafters.gifwallet.dev data`
 	- Explain that we need a in-memory data store for the unit tests, rather than a sqlit one
- 	- This is step 2 (926b1a5)
+ 	- This is step 2 (04aa391)
 
 - Start creating a "createGIF" and "fetchGIF" method. Do the absolute minimum to get a test failing.
 	- On the create code, forget to add a property 
@@ -35,7 +35,7 @@
 	- Explain that it's missing the `save` method
 	- It is still failing, because it's missing the creationDate, add it.
 	- Now it works!
-	- Step 3 (d052d33)
+	- Step 3 (6c9319d)
 
 - Let's create a test that makes sure you can only add one GIF per ID
 	- Refactor the gif create code in the test to a new method so it can be reused
