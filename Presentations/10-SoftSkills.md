@@ -164,7 +164,7 @@ Goal: Make the code readable and maintainable
 
 ---
 
-# What is **not** TECHDEBT === SLOP
+# What is not TECHDEBT (== SLOP)
 
 * Copy-pasted code, repeated elsewhere
 * Wrongly named variables/methods
@@ -175,11 +175,11 @@ If it works, should you ship this code?
 
 ---
 
-# What is **not** TECHDEBT === SLOP
+# What is not TECHDEBT (== SLOP)
 
-* copy-pasted code, repeated elsewhere
-* wrongly named variables/methods
-* unused code
+* Copy-pasted code, repeated elsewhere
+* Wrongly named variables/methods
+* Unused code
 
 If it works, should you ship this code?
 
@@ -190,7 +190,7 @@ If it works, should you ship this code?
 
 ---
 
-# What is **not** TECHDEBT === SLOP
+# What is not TECHDEBT (== SLOP)
 
 ```swift
 class Product {
@@ -210,14 +210,14 @@ class Order {
 
 ---
 
-# What is **not** TECHDEBT === SLOP
+# What is not TECHDEBT (== SLOP)
 
 ```swift
 class Product {
 	let price: Float
 
-	func isFreeFor(customer: Customer, code: DiscountCode?) -> Bool {
-		let discount: Float = code?.discounts ?? 0.0
+	func isFreeFor(customer: Customer, discountCode: DiscountCode?) -> Bool {
+		let discount: Float = discountCode?.discounts ?? 0.0
 		return customer.storeCredit + discounts >= price
 	}
 }
@@ -235,7 +235,7 @@ class Order {
 
 ---
 
-# What is **not** TECHDEBT === SLOP
+# What is not TECHDEBT (== SLOP)
 
 ```swift
 class Product {
@@ -244,10 +244,6 @@ class Product {
 	func isFreeFor(customer: Customer, discountCode: DiscountCode?) -> Bool {
 		let discount: Float = discountCode?.discounts ?? 0.0
 		return isPurchaseFree(customer: customer, discounts: discounts)
-	}
-
-	func isPurchaseFree(customer: Customer, discounts: Float) -> Bool {
-		return customer.storeCredit + discounts >= price
 	}
 }
 
@@ -264,6 +260,18 @@ class Order {
 
 ---
 
+# What is not TECHDEBT (== SLOP)
+
+```swift
+extension Product {
+	func isPurchaseFree(customer: Customer, discounts: Float) -> Bool {
+		return customer.storeCredit + discounts >= price
+	}
+}
+```
+
+---
+
 # Why is SLOP bad?
 
 - Duplicates behaviors
@@ -274,7 +282,7 @@ class Order {
 
 ---
 
-# What **is** TECHDEBT?
+# What is TECHDEBT?
 
 - Code to fix later (or never)
 - Future-features, but not now-features
@@ -282,7 +290,7 @@ class Order {
 
 ---
 
-# What **is** TECHDEBT?
+# What is TECHDEBT?
 
 ```swift
 class DiscountCode {
@@ -300,7 +308,7 @@ class Order {
 
 ---
 
-# What **is** TECHDEBT?
+# What is TECHDEBT?
 
 ```swift
 class DiscountCodeInteractor {
@@ -311,19 +319,25 @@ class DiscountCodeInteractor {
 		...
 	}
 }
+```
 
+---
+
+# What is TECHDEBT?
+
+```swift
 class DiscountCode {
 	let amount: Float
+	let discountCodeInteractor: DiscountCodeInteractor
 
 	func isApplicable(shippingAddress: Address) -> Promise<Bool> {
 		/* TECHDEBT: we don't have promotions yet outside ES,
 		 * and DiscountCodeInteractor hasn't the ability to check
 		 * code based on its country, so we hardcode that for now
 		 * should be fixed before adding discounts for other countries */
-		return DiscountCodeInteractor.isDiscountCodeValid().map({ isCodeValid in
+		return discountCodeInteractor.isDiscountCodeValid().map({ isCodeValid in
 			isCodeValid && shippingAddress.country.code == "ES"
 		})
-
 	}
 }
 ```
@@ -422,7 +436,7 @@ Understand people different from you:
 
 They work on a totally different set of priorities
 
-- We need to to understand them.
+- We need to understand them.
 - We need to make ourselves understood.
 - We have to push back when asked to solve the *wrong problem*.
 
@@ -457,11 +471,11 @@ They work on a totally different set of priorities
 ---
 
 
-> We ultimately code not for machines,
+> __We__ ultimately __code__ not for machines,
 
-> But for people to use,
+> But __for people__ to use,
 
-> Understand and make it grow
+> understand and make it grow
 
 ---
 
